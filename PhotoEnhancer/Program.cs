@@ -37,19 +37,18 @@ namespace PhotoEnhancer
 
            mainForm.AddFilter(new PixelFilter<GammaParameters>(
                 "Гамма-коррекция",
-                (pixel, parameters) => Convertors.ApplyGammaCorrection(pixel, parameters.GammaR, parameters.GammaG, parameters.GammaB)
+                (pixel, parameters) => Pixel.ApplyGammaCorrection(pixel, parameters.GammaR, parameters.GammaG, parameters.GammaB)
             ));
 
             mainForm.AddFilter(new TransformFilter(
-                "Поворот на 90° по часовой стрелке и отражение по горизонтали",
-                size => new Size(size.Height, size.Width), // Поворот
-                 (point, size) =>
-                 {
-                     // Повернём по часовой
-                     var rotatedPoint = new Point(point.Y, size.Height - point.X - 1);
-                     // И отразим по диагонали. 
-                      return new Point(size.Width - rotatedPoint.X - 1, rotatedPoint.Y);
-                 }
+                "Поворот на 90° по часовой стрелке",
+                     size => new Size(size.Height, size.Width), // Поворот
+                     (point, size) =>
+                     {
+                        // Повернём по часовой стрелке
+                         return new Point(point.Y, size.Height - point.X - 1);
+                     }       
+
     ));
 
             Application.Run(mainForm);

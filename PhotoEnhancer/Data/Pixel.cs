@@ -56,6 +56,16 @@ namespace PhotoEnhancer
 
             return result;
         }
+        public static Pixel ApplyGammaCorrection(Pixel pixel, double gammaR, double gammaG, double gammaB)
+        {
+            // Применяем гамма-коррекцию к каждому компоненту цвета
+            double r = Math.Pow(pixel.R, gammaR);
+            double g = Math.Pow(pixel.G, gammaG);
+            double b = Math.Pow(pixel.B, gammaB);
+
+            // Возвращаем новый пиксель с откорректированными значениями
+            return new Pixel(r, g, b);
+        }
 
         static double Trim(double lightness) => lightness > 1 ? 1 : lightness;
 

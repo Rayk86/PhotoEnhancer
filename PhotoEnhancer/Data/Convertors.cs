@@ -44,16 +44,7 @@ namespace PhotoEnhancer
 
             return bmp;
         }
-        public static Pixel ApplyGammaCorrection(Pixel pixel, double gammaR, double gammaG, double gammaB)
-        {
-            // Применяем гамма-коррекцию к каждому компоненту цвета
-            double r = Math.Pow(pixel.R, gammaR);
-            double g = Math.Pow(pixel.G, gammaG);
-            double b = Math.Pow(pixel.B, gammaB);
 
-            // Возвращаем новый пиксель с откорректированными значениями
-            return new Pixel(r, g, b);
-        }
 
 
 
